@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,8 +15,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './auth.component.css'
 })
 export class AuthComponent {
-  loginForm!: FormGroup; 
-  submitLabel : string  = 'Log In';
+  //component Parameters for SignUp and LogIn components
+  @Output() onSubmitEvent = new EventEmitter<any>();
+  @Input() submitLabel: string = '';
+
+  //Form Value holders
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
 
@@ -40,7 +43,10 @@ export class AuthComponent {
   }
 
   onSubmit(){
-
+    this.onSubmitEvent.emit({
+      email: this.email.value,
+      password: this.password.value
+    })
   }
  
 }

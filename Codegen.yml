@@ -1,0 +1,11 @@
+#This file is used to generate typescript types for graphql queries and mutations
+#not needed during deployment and using the app
+
+schema: 'http://localhost:8080/graphql'
+documents: './src/**/*.graphql'
+generates:
+  ./src/generated/graphql.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-apollo-angular'
