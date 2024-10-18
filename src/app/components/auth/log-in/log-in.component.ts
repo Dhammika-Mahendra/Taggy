@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthComponent } from "../auth.component";
+import { LoginService } from './log-in.service';
+import { Router } from '@angular/router';
+import { CreateUserInput } from '../../../../generated/graphql';
 
 @Component({
   selector: 'app-log-in',
@@ -10,7 +13,9 @@ import { AuthComponent } from "../auth.component";
 })
 export class LogInComponent {
 
-  logIn({email, password} : any){
+  constructor(private readonly loginService: LoginService, private readonly router : Router){}
 
+  logIn(createUserData: CreateUserInput){
+    this.loginService.login(createUserData).subscribe((user) => {})
   }
 }
