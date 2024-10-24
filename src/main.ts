@@ -8,17 +8,11 @@ import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
 import { inject } from '@angular/core';
 import { environment } from './environment/environment';
-import { TokenInterceptor } from './app/components/auth/token.interceptor';
 
 bootstrapApplication(AppComponent, 
   {
   providers:[
     provideHttpClient(),
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    },
     provideRouter(routes),
     provideApollo(() => {
       const httpLink = inject(HttpLink);

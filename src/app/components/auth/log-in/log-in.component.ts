@@ -17,16 +17,16 @@ import { environment } from '../../../../environment/environment';
 export class LogInComponent {
 
   constructor(
-    private readonly loginService: LoginService, 
-    private readonly router : Router, 
-    private readonly authService : AuthService,
-    private readonly httpClient: HttpClient
+    private readonly loginService: LoginService,
+    private readonly authService: AuthService, 
+    private readonly router : Router
     ){}
 
   logIn(createUserData: CreateUserInput){
     this.loginService.login(createUserData).subscribe((response : any) => {
       if(response){
-        this.authService.isAuthenticated().subscribe((response : any) => {});
+        this.authService.setToken(response.taggy_token);
+        this.router.navigate(['/home']);
       }
     })
   }
