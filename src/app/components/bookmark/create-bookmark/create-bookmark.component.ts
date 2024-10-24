@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CreateBookmarkGQL } from '../../../../generated/graphql';
 
 @Component({
   selector: 'app-create-bookmark',
@@ -17,6 +18,7 @@ export class CreateBookmarkComponent {
   bookmarkName = new FormControl('', [Validators.required]);
 
   constructor(
+    private readonly createBookmarkGql: CreateBookmarkGQL,
   ) {}
 
   ngOnInit(): void {
@@ -30,5 +32,10 @@ export class CreateBookmarkComponent {
   }
 
   createBookmark() {
+    const nameData = this.bookmarkName.value || ''; 
+    this.createBookmarkGql.mutate({ createBookmarkData: { name: nameData } })
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 }
