@@ -4,10 +4,12 @@ import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './components/auth/auth.guard';
+import { BookmarkDetailComponent } from './components/bookmark/bookmark-detail/bookmark-detail.component';
 
 export const routes: Routes = [
     {path:'login', component: LogInComponent},
     {path:'signup', component: SignUpComponent},
     {path:'auth', component: AuthComponent },
     {path:'home', component: HomeComponent},
+    {path:'bookmark/:id', component: BookmarkDetailComponent}
 ];

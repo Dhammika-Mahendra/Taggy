@@ -5,7 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CreateBookmarkGQL } from '../../../../generated/graphql';
+import { BookmarksDocument, CreateBookmarkGQL } from '../../../../generated/graphql';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-bookmark',
@@ -19,6 +20,7 @@ export class CreateBookmarkComponent {
 
   constructor(
     private readonly createBookmarkGql: CreateBookmarkGQL,
+    private readonly dialogRef: MatDialogRef<CreateBookmarkComponent>
   ) {}
 
   ngOnInit(): void {
@@ -33,9 +35,17 @@ export class CreateBookmarkComponent {
 
   createBookmark() {
     const nameData = this.bookmarkName.value || ''; 
-    this.createBookmarkGql.mutate({ createBookmarkData: { name: nameData } })
+
+    this.createBookmarkGql.
+    mutate({ 
+      createBookmarkData: { name: nameData } 
+    },
+    {
+      refetchQueries: [{query: BookmarksDocument}]
+    }
+    )
       .subscribe((res) => {
-        console.log(res);
+        this.dialogRef.close();
       });
   }
 }

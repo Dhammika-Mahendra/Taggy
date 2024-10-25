@@ -19,10 +19,17 @@
   
     h3 {
       text-decoration: underline;
+      font-size: 15px;
     }
   
     li {
       cursor: pointer;
+      list-style-type: none;
     }
   }
   
+
+  .carditem{
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
