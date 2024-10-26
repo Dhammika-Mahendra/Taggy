@@ -7,7 +7,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Bookmark, BookmarkGQL} from '../../../../generated/graphql';
+import { Bookmark, BookmarkGQL, Link, LinksGQL} from '../../../../generated/graphql';
 import { switchMap } from 'rxjs';
 import { AddLinkComponent } from './add-link/add-link.component';
 
@@ -21,13 +21,14 @@ import { AddLinkComponent } from './add-link/add-link.component';
 export class BookmarkDetailComponent {
 
   bookmark: Bookmark | undefined;
-  links: any;
+  links: Link[] = [];
   isLoading = true;
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly dialog: MatDialog,
-    private readonly bookmarkGql: BookmarkGQL
+    private readonly bookmarkGql: BookmarkGQL,
+    private readonly linksGql : LinksGQL
   ) {}
 
   ngOnInit(): void {
@@ -35,10 +36,16 @@ export class BookmarkDetailComponent {
       .pipe(
         switchMap((params) => {
           return this.bookmarkGql.watch({ _id: params['id'] }).valueChanges;
+        }),
+        switchMap((result) => {
+          this.bookmark = result.data.bookmark;
+          return this.linksGql.watch({ urls: result.data.bookmark.links })
+            .valueChanges;
         })
       )
       .subscribe((result) => {
-        this.bookmark = result.data.bookmark;
+        this.isLoading = false;
+        this.links = result.data.links;
       });
   }
 
@@ -49,6 +56,6 @@ export class BookmarkDetailComponent {
   }
 
   onLinkClick(url : string){
-
+    window.open(url, '_blank');
   }
 }
