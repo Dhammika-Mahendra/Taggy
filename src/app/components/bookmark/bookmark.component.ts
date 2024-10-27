@@ -15,7 +15,7 @@ import { map } from 'rxjs/operators';
   standalone: true,
   imports: [MatCardModule,CommonModule,MatIconModule,MatButtonModule],
   templateUrl: './bookmark.component.html',
-  styleUrl: './bookmark.component.css'
+  styleUrl: './bookmark.component.scss'
 })
 export class BookmarkComponent {
   bookmarks$ = new Observable<Bookmark[]>();

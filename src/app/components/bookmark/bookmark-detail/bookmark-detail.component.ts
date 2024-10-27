@@ -16,7 +16,7 @@ import { AddLinkComponent } from './add-link/add-link.component';
   standalone: true,
   imports: [MatToolbarModule, MatIconModule,CommonModule,MatButtonModule,MatCardModule,MatProgressSpinnerModule],
   templateUrl: './bookmark-detail.component.html',
-  styleUrl: './bookmark-detail.component.css'
+  styleUrl: './bookmark-detail.component.scss'
 })
 export class BookmarkDetailComponent {
 

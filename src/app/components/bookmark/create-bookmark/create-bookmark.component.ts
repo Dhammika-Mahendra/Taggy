@@ -13,7 +13,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   standalone: true,
   imports: [MatFormFieldModule,MatInputModule,MatButtonModule,MatIconModule,CommonModule,FormsModule,ReactiveFormsModule],
   templateUrl: './create-bookmark.component.html',
-  styleUrl: './create-bookmark.component.css'
+  styleUrl: './create-bookmark.component.scss'
 })
 export class CreateBookmarkComponent {
   bookmarkName = new FormControl('', [Validators.required]);

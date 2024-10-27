@@ -6,7 +6,7 @@ import { BookmarkComponent } from "../bookmark/bookmark.component";
   standalone: true,
   imports: [BookmarkComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.scss'
 })
 export class HomeComponent {
 

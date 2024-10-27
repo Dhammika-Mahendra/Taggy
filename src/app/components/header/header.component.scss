@@ -1,0 +1,9 @@
+@import '../../../styles.scss';
+
+.hd{
+    background-color:cornflowerblue;
+    position: fixed;
+    top:0;
+    width:100%;
+    @extend .header-text-style;
+}

@@ -7,6 +7,7 @@ import { AuthGuard } from './components/auth/auth.guard';
 import { BookmarkDetailComponent } from './components/bookmark/bookmark-detail/bookmark-detail.component';
 
 export const routes: Routes = [
+    {path:'', redirectTo: 'login',pathMatch: 'full'},
     {path:'login', component: LogInComponent},
     {path:'signup', component: SignUpComponent},
     {path:'auth', component: AuthComponent },

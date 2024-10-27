@@ -13,7 +13,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   standalone: true,
   imports: [MatButtonModule,MatFormFieldModule,MatInputModule,MatIconModule,CommonModule,FormsModule,ReactiveFormsModule],
   templateUrl: './add-link.component.html',
-  styleUrl: './add-link.component.css'
+  styleUrl: './add-link.component.scss'
 })
 export class AddLinkComponent {
   link = new FormControl('', [Validators.required]);
