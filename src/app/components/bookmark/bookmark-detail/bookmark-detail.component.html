@@ -1,26 +1,23 @@
-<ng-container *ngIf="bookmark">
-    <mat-toolbar color="primary">
+<div *ngIf="bookmark" class="mainCont">
+    <div>
       <span>{{ bookmark.name }}</span>
-      <span class="spacer"></span>
-      <button mat-icon-button (click)="onAdd()">
-        <mat-icon>add</mat-icon>
-      </button>
-    </mat-toolbar>
+      <div class="fab" (click)="onAdd()">
+        +
+      </div>
+    </div>
     <div *ngIf="isLoading; else showLinks">
-      <mat-spinner class="spinner"></mat-spinner>
+      <p>Loading...</p>
     </div>
     <ng-template #showLinks>
-      <ul class="links">
-        <li class="link" *ngFor="let link of links">
-          <mat-card (click)="onLinkClick(link.url)">
-            <mat-card-title-group>
-              <mat-card-title>{{ link.title }}</mat-card-title>
-              <mat-card-subtitle>{{ link.siteName }}</mat-card-subtitle>
-              <img src="{{ link.images[0] }}" alt="" mat-card-md-image />
-            </mat-card-title-group>
-          </mat-card>
-        </li>
-      </ul>
+      <div class="linkCont">
+        <div class="linkItem" *ngFor="let link of links" (click)="onLinkClick(link.url)">
+              <div class="linkItemDet">
+                <div>{{ link.title }}</div>
+                <div>{{ link.siteName }}</div>
+              </div>
+              <img src="{{ link.images[0] }}" alt=""/>
+        </div>
+      </div>
     </ng-template>
-  </ng-container>
-  
+  </div>
+  <app-add-link [dialogVisibile]="dialogVisibile" (changeDialogVisibility)="onDialogVisibilityChange($event)"></app-add-link>

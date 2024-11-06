@@ -1,35 +1,33 @@
-import { Component, Inject } from '@angular/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Bookmark, BookmarkDocument, UpdateBookmarkGQL } from '../../../../../generated/graphql';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-link',
   standalone: true,
-  imports: [MatButtonModule,MatFormFieldModule,MatInputModule,MatIconModule,CommonModule,FormsModule,ReactiveFormsModule],
+  imports: [CommonModule,FormsModule,ReactiveFormsModule],
   templateUrl: './add-link.component.html',
   styleUrl: './add-link.component.scss'
 })
 export class AddLinkComponent {
   link = new FormControl('', [Validators.required]);
+  @Input() dialogVisibile: boolean = false;
+  @Output() changeDialogVisibility = new EventEmitter<boolean>();
 
   constructor(
-    private readonly updatebookmarkGql: UpdateBookmarkGQL,
-    @Inject(MAT_DIALOG_DATA) private readonly data : {bookmark: Bookmark},
-    private readonly dialogRef: MatDialogRef<AddLinkComponent>
+    private readonly updatebookmarkGql: UpdateBookmarkGQL
   ){}
 
   getLinkError():string {
     return '';
   }
   
+  closeDialog(val:boolean):void{
+    this.changeDialogVisibility.emit(val);
+  }
 
-  addLink() {
+/*   addLink() {
     this.updatebookmarkGql
       .mutate(
         {
@@ -48,7 +46,10 @@ export class AddLinkComponent {
         }
       )
       .subscribe(() => {
-        this.dialogRef.close();
       });
+  } */
+
+  addLink(){
+
   }
 }

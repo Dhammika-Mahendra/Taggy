@@ -1,11 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import {MatCardModule} from '@angular/material/card';
-import {MatIconModule} from '@angular/material/icon';
 import { Router } from '@angular/router';
-import {MatButtonModule} from '@angular/material/button';
 import { Observable } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
 import { CreateBookmarkComponent } from './create-bookmark/create-bookmark.component';
 import { Bookmark, BookmarksGQL } from '../../../generated/graphql';
 import { map } from 'rxjs/operators';
@@ -13,15 +9,15 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-bookmark',
   standalone: true,
-  imports: [MatCardModule,CommonModule,MatIconModule,MatButtonModule],
+  imports: [CommonModule, CreateBookmarkComponent],
   templateUrl: './bookmark.component.html',
   styleUrl: './bookmark.component.scss'
 })
 export class BookmarkComponent {
   bookmarks$ = new Observable<Bookmark[]>();
+  dialogVisibile : boolean = false;
 
   constructor(
-    private readonly dialog: MatDialog,
     private readonly router: Router,
     private readonly bookmarks: BookmarksGQL
   ) {}
@@ -32,11 +28,15 @@ export class BookmarkComponent {
   }
 
   onFabClick() {
-    this.dialog.open(CreateBookmarkComponent);
+    this.dialogVisibile = true;
   }
 
   onBookmarkClick(bookmarkId: string) {
     this.router.navigate(['/bookmark', bookmarkId]);
+  }
+
+  onDialogVisibilityChange(val:boolean){
+    this.dialogVisibile = val;
   }
 
 }

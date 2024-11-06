@@ -1,9 +1,21 @@
 @import '../../../styles.scss';
 
-.hd{
-    background-color:cornflowerblue;
-    position: fixed;
-    top:0;
-    width:100%;
+.header-text-style{
+    font-size: 30px;
+    color: #FFFFFF;  
+}
+
+.hd {
     @extend .header-text-style;
+    height: 50px;
+    background-color: $primary-bg;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    top: 0;
 }

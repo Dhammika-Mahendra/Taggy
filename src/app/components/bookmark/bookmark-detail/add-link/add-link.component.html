@@ -1,12 +1,15 @@
-<div class="container">
-    <h6>Add Link</h6>
-    <mat-form-field appearance="outline">
-      <mat-label>Link</mat-label>
-      <input type="text" matInput [formControl]="link" required />
-      <mat-error *ngIf="link.invalid">
-        {{ getLinkError() }}
-      </mat-error>
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="addLink()">Add</button>
+<div class="dialogBackdrop" *ngIf="dialogVisibile">
+  <div class="dialogContainer">
+      <div class="dialogClose" (click)="closeDialog(false)">x</div>
+      <p class="dialogTitle">Add Link</p>
+      <div class="formField">
+        <div class="fieldName">Link</div>
+        <input type="text" class="inputField" [formControl]="link" required />
+        <div class="inputError" *ngIf="link.invalid">
+          {{ getLinkError() }}
+        </div>
+      </div>
+    <div class="addButtn" (click)="addLink()">Add</div>
   </div>
+</div>
   

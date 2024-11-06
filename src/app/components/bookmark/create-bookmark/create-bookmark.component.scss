@@ -1,15 +1,11 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border-radius: 5px;
-  }
-  
+@import '../../../../styles.scss';
+
   h6 {
     font-size: 20px;
     text-align: center;
   }
-  
-  button{
-    margin-top: 20px;
+
+  .createBttn{
+    @extend .bttn;
+    background-color: $primary-btn-bg;
   }

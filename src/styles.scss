@@ -2,8 +2,134 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.header-text-style {
-    font-size: 20px;
-    color: #FFFFFF;
+$primary-bg: #4da3ff;
+$light-bg: #f5f5f5;
+$dark-bg: #e2e0e0;
+
+$primary-btn-bg: #4da3ff;
+$primary-btn-bg-hover: #3996f8;
+$danger-btn-bg: #ff6565;
+
+
+$primary-font-color: #FFFFFF;
+$descript-font-color: #615b5b;
+
+$primary-border-color: #929090;
+
+
+.bttn{
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    color:$primary-font-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bttn:hover{
+    cursor: pointer;
+    background-color: $primary-btn-bg-hover; ;
+}
+  
+
+/*---------- form fields---------------------*/
+.formField{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    align-items: flex-start;
+    height: 80px;
 }
 
+.inputField{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px solid $primary-border-color;
+    width: 100%;
+    font-size: 18px;
+    height: 30px;
+    font-weight: 100;
+}
+
+.fieldName{
+    color: $descript-font-color;
+    font-size: 15px;
+}
+
+.inputError{
+    color: $danger-btn-bg;
+    font-size: 12px;
+}
+
+/*----circular button----------------*/
+.fab {
+    position: fixed;
+    right: 4rem;
+    bottom: 4rem;
+    border-radius: 50%;
+    background-color: $primary-btn-bg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: white;
+    width: 50px;
+    height: 50px;
+  }
+  .fab:hover{
+    background-color: $primary-btn-bg-hover;
+    cursor: pointer;
+  }
+
+
+/*----header safe margin----------------*/
+.headersafe{
+    margin-top: 80px;
+}
+
+/*--------dialog-------------------*/
+
+.dialogBackdrop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(148, 148, 148, 0.274);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.dialogContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: white;
+    position: relative;
+}
+
+.dialogClose{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 20px;
+}
+.dialogClose:hover{
+    cursor: pointer;
+    color:$danger-btn-bg;
+}
+
+.dialogTitle{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: $descript-font-color;
+}
