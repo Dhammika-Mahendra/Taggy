@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Bookmark, BookmarkGQL, Link, LinksGQL} from '../../../../generated/graphql';
 import { switchMap } from 'rxjs';
@@ -14,19 +8,18 @@ import { AddLinkComponent } from './add-link/add-link.component';
 @Component({
   selector: 'app-bookmark-detail',
   standalone: true,
-  imports: [MatToolbarModule, MatIconModule,CommonModule,MatButtonModule,MatCardModule,MatProgressSpinnerModule],
+  imports: [CommonModule,AddLinkComponent],
   templateUrl: './bookmark-detail.component.html',
   styleUrl: './bookmark-detail.component.scss'
 })
 export class BookmarkDetailComponent {
-
+  dialogVisibile : boolean = false;
   bookmark: Bookmark | undefined;
   links: Link[] = [];
   isLoading = true;
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly dialog: MatDialog,
     private readonly bookmarkGql: BookmarkGQL,
     private readonly linksGql : LinksGQL
   ) {}
@@ -50,12 +43,14 @@ export class BookmarkDetailComponent {
   }
 
   onAdd() {
-    this.dialog.open(AddLinkComponent, {
-      data: { bookmark: this.bookmark },
-    });
+    this.dialogVisibile=true;
   }
 
   onLinkClick(url : string){
     window.open(url, '_blank');
+  }
+
+  onDialogVisibilityChange(val:boolean){
+    this.dialogVisibile = val;
   }
 }

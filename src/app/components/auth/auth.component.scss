@@ -1,3 +1,4 @@
+@import "../../../styles.scss";
 
 .container { 
     display: flex;
@@ -7,6 +8,8 @@
     height: 100vh;
 }
 
-button {
-    margin-top: 1 rẻm;
+.authbttn{
+    @extend .bttn;
+    background-color: $primary-btn-bg;
 }
+

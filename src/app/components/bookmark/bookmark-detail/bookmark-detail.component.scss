@@ -1,3 +1,41 @@
-span{
-    font-size: 18px;
+@import  '../../../../styles.scss';
+
+/*---------general layout-------------------*/
+
+
+.mainCont{
+    @extend .headersafe;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.linkCont{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.linkItem{
+    background-color: $light-bg;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+.linkItem:hover{
+    cursor: pointer;
+    background-color: $dark-bg;
+}
+
+.linkItemDet{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
 }

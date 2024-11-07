@@ -1,12 +1,13 @@
-<ul class="bookmarks">
-    <li class="bookmark" *ngFor="let bookmark of bookmarks$ | async">
-      <mat-card class="carditem" (click)="onBookmarkClick(bookmark._id)">
-        <h3>{{ bookmark.name }}</h3>
-      </mat-card>
-    </li>
-  </ul>
-  <button mat-fab color="primary" class="fab" (click)="onFabClick()">
-    <mat-icon>add</mat-icon>
-  </button>
+<div class="mainCont">
+  <div class="bookmark" *ngFor="let bookmark of bookmarks$ | async">
+    <div class="carditem" (click)="onBookmarkClick(bookmark._id)">
+      <p>{{ bookmark.name }}</p>
+    </div>
+  </div>
+  <app-create-bookmark [dialogVisibile]="dialogVisibile" (changeDialogVisibility)="onDialogVisibilityChange($event)"></app-create-bookmark>
+  <div class="fab" (click)="onFabClick()">
+      +
+  </div>
+</div>
   
  

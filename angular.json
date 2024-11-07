@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SecondApp": {
+    "Taggy": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -27,7 +27,6 @@
               }
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -60,11 +59,11 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "SecondApp:build:production",
+              "buildTarget": "Taggy:build:production",
               "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
-              "buildTarget": "SecondApp:build:development"
+              "buildTarget": "Taggy:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +86,6 @@
               }
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss"
             ],
             "scripts": []

@@ -1,22 +1,20 @@
 
 <div class="container">
-    <h3>Booker</h3>
+    <h3>Let's {{submitLabel}}</h3>
 
-    <mat-form-field appearance="outline">
-    <mat-label>Email</mat-label>
-    <input matInput [formControl]="email" required/>
-    <mat-icon matSuffix>email</mat-icon>
-    <mat-error *ngIf="email.invalid">{{ getEmailErrorMessage() }}</mat-error>
-    </mat-form-field>
+    <div class="formField">
+    <div div="fieldName">Email</div>
+    <input class="inputField" [formControl]="email" required/>
+    <div class="inputError" *ngIf="email.invalid">{{ getEmailErrorMessage() }}</div>
+    </div>
 
-    <mat-form-field appearance="outline">
-    <mat-label>Password</mat-label>
-    <input type="password" matInput [formControl]="password" required/> 
-    <mat-icon matSuffix>lock</mat-icon>
-    <mat-error *ngIf="password.invalid">{{ getPasswordErrorMessage() }}</mat-error>
-    </mat-form-field>
+    <div class="formField">
+    <div div="fieldName">Password</div>
+    <input class="inputField" type="password" [formControl]="password" required/> 
+    <div class="inputError" *ngIf="password.invalid">{{ getPasswordErrorMessage() }}</div>
+    </div>
     
-    <button mat-flat-button color="#F5F5F5" (click)="onSubmit()">
+    <div class="authbttn" color="#F5F5F5" (click)="onSubmit()">
     {{submitLabel }}
-    </button>
+    </div>
 </div>

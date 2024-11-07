@@ -1,14 +1,17 @@
-<div class="container">
-    <h6>Create Bookmark</h6>
-    <mat-form-field appearance="outline">
-      <mat-label>Bookmark Name</mat-label>
-      <input type="text" matInput [formControl]="bookmarkName" required />
-      <mat-error *ngIf="bookmarkName.invalid">
-        {{ getBookmarkNameError() }}
-      </mat-error>
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="createBookmark()">
-      Create
-    </button>
+<div class="dialogBackdrop" *ngIf="dialogVisibile">
+  <div class="dialogContainer">
+    <div class="dialogClose" (click)="closeDialog(false)">x</div>
+      <p class="dialogTitle">Create Bookmark</p>
+      <div class="formField">
+        <div class="fieldName">Bookmark Name</div>
+        <input type="text" class="inputField" [formControl]="bookmarkName" required />
+        <div class="inputError" *ngIf="bookmarkName.invalid">
+          {{ getBookmarkNameError() }}
+        </div>
+      </div>
+      <div class="createBttn" (click)="createBookmark()">
+        Create
+      </div>
   </div>
+</div>
   
